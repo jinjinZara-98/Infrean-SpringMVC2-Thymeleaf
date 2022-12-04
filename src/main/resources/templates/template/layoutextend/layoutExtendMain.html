@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!--html자체를 바꿔치지, title태그 section태그를 파라미터로 넣어서 보냄
+    결국 layoutFile.html 에 필요한 내용을 전달하면서 <html> 자체를 layoutFile.html 로 변경
+    이전 예제 layout 폴더에 있는 파일은 head 태그에 넣어서
+    xmlns:th="http://www.thymeleaf.org"는 타임리프 사용할때 html 태그에 넣어줘야 하는-->
+<html th:replace="~{template/layoutExtend/layoutFile :: layout(~{::title},~{::section})}"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>메인 페이지 타이틀</title>
+    </head>
+    <body>
+        <section>
+            <p>메인 페이지 컨텐츠</p>
+            <div>메인 페이지 포함 내용</div>
+        </section>
+    </body>
+</html>
+<!--페이지를 많이 없을땐 프레그먼트 페이지 많아지고 관리 많아지면 레이아웃 쓰는게 나음-->

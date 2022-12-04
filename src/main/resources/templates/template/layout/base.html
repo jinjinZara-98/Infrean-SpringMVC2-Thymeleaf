@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--메서드 넣는거와 비슷한데 단순히 데이터가 아니라 태그를 넣음
+    layoutMain에서 넘어온 title과 links를 꺼냄
+    레이아웃은 그대로 값만 랜더링-->
+<head th:fragment="common_header(title,links)">
+
+<!--    파라미터로 넘어온 타이틀로 변경-->
+    <title th:replace="${title}">레이아웃 타이틀</title>
+
+    <!-- 공통 -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/awesomeapp.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <script type="text/javascript" th:src="@{/sh/scripts/codebase.js}"></script>
+
+    <!-- 추가 -->
+<!--    파라미터로 넘어온 링크로 변경-->
+    <th:block th:replace="${links}" />
+</head>

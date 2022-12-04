@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>식 기본 객체 (Expression Basic Objects)</h1>
+        <ul>
+<!--            컨트롤러 메서드 파라미터로 받아서 모델에 넘겨주기도 가능-->
+            <li>request = <span th:text="${#request}"></span></li>
+            <li>response = <span th:text="${#response}"></span></li>
+            <li>session = <span th:text="${#session}"></span></li>
+            <li>servletContext = <span th:text="${#servletContext}"></span></li>
+            <li>locale = <span th:text="${#locale}"></span></li>
+        </ul>
+        <h1>편의 객체</h1>
+        <ul>
+<!--            url에 있는 paramData 파라미터에 해당하는 값 출력
+                원래 같으면 컨트롤러에 담아서 모델에 담아서 반환-->
+            <li>Request Parameter = <span th:text="${param.paramData}"></span></li>
+<!--            세션에 담아둔 데이터도 꺼내서 출력 가능-->
+            <li>session = <span th:text="${session.sessionData}"></span></li>
+            <!--스프링빈에 직접 접근 helloBean이라는 이름으로 등록된 빈의 메서드 파라미터에 Spring 문자열 대입
+                그리고 메서드 반환값을 출력하는-->
+            <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+        </ul>
+    </body>
+</html>

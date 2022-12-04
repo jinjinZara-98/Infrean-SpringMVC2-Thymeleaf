@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>text vs utext</h1>
+
+        <ul>
+            <li>th:text = <span th:text="${data}"></span></li>
+<!--            utext는 이스케이프 하지말고 그대로 출력-->
+            <li>th:utext = <span th:utext="${data}"></span></li>
+        </ul>
+
+<!--        th:inline="none" : 타임리프는 [[...]] 를 해석하기 때문에, 화면에 [[...]] 글자를 보여줄 수 없다.-->
+<!--        이 테그 안에서는 타임리프가 해석하지 말라는 옵션-->
+        <h1><span th:inline="none">[[...]] vs [(...)]</span></h1>
+
+        <ul>
+            <li><span th:inline="none">[[...]] = </span>[[${data}]]</li>
+<!--            [()] 는 이스케이프 하지말고 그대로 출력-->
+            <li><span th:inline="none">[(...)] = </span>[(${data})]</li>
+        </ul>
+
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>URL 링크</h1>
+        <ul>
+            <!--단순 url링크 -->
+            <li><a th:href="@{/hello}">basic url</a></li>
+            <!--쿼리 파라미터, 타임리프로 url처럼 표현할때, 단순히 쿼리 파라미터로 남길때-->
+            <!-- hello?param1=data1&param2=data2
+                 param1에 data1 담고 param2에 data2 담음 모델에서-->
+            <li><a th:href="@{/hello (param1 = ${param1}, param2 = ${param2})}">
+                hello query param</a></li>
+            <!--경로 변수. 데이터를 지정해 바인딩, /hello/{param1}?{param2}-->
+            <li><a th:href="@{/hello/ {param1}/ {param2} (param1 = ${param1}, param2 = ${param2})}">
+                path variable</a></li>
+            <!--경로 변수 + 쿼리 파라미터, hello/{param1}?param2=data2,
+                경로에 param2에 대한게 없으면 남는 애는 자동으로 쿼리 파라미터-->
+            <li><a th:href="@{/hello/ {param1} (param1 = ${param1}, param2 = ${param2})}">
+                path variable + query parameter</a></li>
+        </ul>
+    </body>
+</html>

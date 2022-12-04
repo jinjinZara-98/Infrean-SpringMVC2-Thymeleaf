@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>예시</h1>
+
+        <span th:text="${data}">html data</span>
+
+        <h1>1. 표준 HTML 주석</h1>
+        <!--일반 html주석은 타임리프로 랜더링 하지않아 홈페이지 소스로 보면 초록색으로 되어있음  -->
+        <!-- <span th:text="${data}">html data</span> -->
+
+        <h1>2. 타임리프 파서 주석</h1>
+        <!--아예 출력이 안됨, 랜더링할때 아예 지우는, 홈페이지 소스로 못봄, 대부분 이걸 씀 -->
+        <!--/* [[${data}]] */-->
+
+        <!-- /*가 시작 */ 끝, 중간에 있는 태그는 통으로 다 날라감, 홈페이지 소스로 못봄-->
+        <!--/*-->
+        <span th:text="${data}">html data</span>
+        <!--*/-->
+
+        <h1>3. 타임리프 프로토타입 주석</h1>
+        <!--타임리프 랜더링 됐을때만 보이는, html주석이기 때문에 랜더링하지 않음
+            홈페이지 소스로 보면 <span>Spring!</span>로 되어있음
+            웹브라우저에서 파일을 직접 열어볼땐 안볼꺼야 웹브라우저야 랜더링 하지마
+            타임리프로 랜더링 된 경우에만 보여줄꺼야-->
+        <!--/*/
+        <span th:text="${data}">html data</span>
+        /*/-->
+    </body>
+</html>

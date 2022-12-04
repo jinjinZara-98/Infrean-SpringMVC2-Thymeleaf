@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--head를 template/layout/base파일로 바꿔치기 공통 레이아웃이어도 조금씩 다르게
+    common_header(~{::title},~{::link})는 현재 페이지의 title태그와 link태그를 넣음
+    link 태그 둘 다 넘어감-->
+    <head th:replace="template/layout/base :: common_header(~{::title},~{::link})">
+        <title>메인 타이틀</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/themes/smoothness/jquery-ui.css}">
+    </head>
+
+    <body>
+        메인 컨텐츠
+    </body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--&lt;!&ndash;head를 template/layout/base파일로 바꿔치기 공통 레이아웃이어도 조금씩 다르게-->
+<!--    common_header(~{::title},~{::link})는 현재 페이지의 title태그와 link태그를 넣음-->
+<!--    link 태그 둘 다 넘어감&ndash;&gt;-->
+<!--<head>-->
+
+<!--    &lt;!&ndash;    파라미터로 넘어온 타이틀로 변경&ndash;&gt;-->
+<!--    <title>메인 타이틀</title>-->
+
+<!--    &lt;!&ndash; 공통 &ndash;&gt;-->
+<!--    <link rel="stylesheet" type="text/css" media="all" href="/css/awesomeapp.css">-->
+<!--    <link rel="shortcut icon" href="/images/favicon.ico">-->
+<!--    <script type="text/javascript" src="/sh/scripts/codebase.js"></script>-->
+
+<!--    &lt;!&ndash; 추가 &ndash;&gt;-->
+<!--    &lt;!&ndash;    파라미터로 넘어온 링크로 변경&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/themes/smoothness/jquery-ui.css">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--메인 컨텐츠-->
+<!--</body>-->
+<!--</html>-->

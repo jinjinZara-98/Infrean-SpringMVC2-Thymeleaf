@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+<!--    화면에 아무것도 안보임, 참고-->
+    <body>
+        <!-- 자바스크립트 인라인 사용 전 -->
+        <script>
+         //괄호는 안에서 바로 값을 출력하는 문법, 값을 랜더링하여 대입
+         //user.username는 userA, user.age는 10
+         //user.username는 문자열이므로 ""붙여줘야
+         var username = "[[${user.username}]]";
+         var age = [[${user.age}]];
+
+         //자바스크립트 내추럴 템플릿, /*[[${user.username}]]*/ 주석처리되고 "test username" 이게 넣어짐
+         var username2 = /*[[${user.username}]]*/ "test username";
+
+         //객체,user.tostring()이 호출됨,  BasicController.User(username=userA, age=10)
+         var user = [[${user}]];
+
+        </script>
+<!--        타임리프는 자바스크립트에서 타임리프를 편리하게 사용할 수 있는 기능 제공-->
+        <!-- 자바스크립트 인라인 사용 후
+            <script th:inline="javascript">는 이 영역안에서는 자스랑 타임리프 같이 쓸때 편한 기능 지원해줌
+            주석처리된 부분을 사용할 수 있도록 도와줌, 자스영역이고 타임리프가 자스를 잘 쓸 수 있게 도와줌
+            문자열이면 ""붙여주고 내츄럴 템플릿처리
+            자바스크립트에서 문제가 될 수 있는 문자가 포함되어 있으면 이스케이프 처리도 해준다. 예) " -> \" -->
+        <script th:inline="javascript">
+             var username = [[${user.username}]];
+             var age = [[${user.age}]];
+
+             //자바스크립트 내추럴 템플릿, 주석부분을 지우고 [[${user.username}]]이걸 넣어줌
+             var username2 = /*[[${user.username}]]*/ "test username";
+
+             //객체, 객체를 josn으로 넣어줌
+             var user = [[${user}]];
+        </script>
+
+        <!-- 자바스크립트 인라인 each -->
+<!--        var user1 = {"username":"userA","age":10};-->
+<!--        var user2 = {"username":"userB","age":20};-->
+<!--        var user3 = {"username":"userC","age":30};-->
+<!--        user[[${stat.count}]]는 user숫자, [[${user}]]는 객체이므로 json으로-->
+<!--        stat는 반복에 대한 상태, count는 1부터 시작-->
+        <script th:inline="javascript">
+             [# th:each="user, stat : ${users}"]
+             var user[[${stat.count}]] = [[${user}]];
+             [/]
+        </script>
+    </body>
+</html>

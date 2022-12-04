@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+
+        <h1>SpringEL 표현식</h1>
+        <ul>Object
+            <li>${user.username} = <span th:text="${user.username}"></span></li>
+            <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+            <li>${user.getUsername()} = <span th:text="${user.getUsername()}"></span></li>
+        </ul>
+
+        <!--리스트는 인덱스-->
+        <ul>List
+            <li>${users[0].username} = <span th:text="${users[0].username}"></span></li>
+            <li>${users[0]['username']} = <span th:text="${users[0]['username']}"></span></li>
+            <li>${users[0].getUsername()} = <span th:text="${users[0].getUsername()}"></span></li>
+        </ul>
+
+        <!--맵은 키를 넣어서 꺼내는-->
+        <ul>Map
+            <li>${userMap['userA'].username} = <span th:text="${userMap['userA'].username}"></span></li>
+            <li>${userMap['userA']['username']} = <span th:text="${userMap['userA']['username']}"></span></li>
+            <li>${userMap['userA'].getUsername()} = <span th:text="${userMap['userA'].getUsername()}"></span></li>
+        </ul>
+
+        <h1>지역 변수 - (th:with)</h1>
+        <!--리스트 users에서 0번째 데이터를 first에, first는 user 객체가 되는
+            지역변수는 선언한 태그안에서만 사용가능, 즉 여기 div태그 안에서만-->
+        <div th:with="first=${users[0]}">
+            <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p>
+        </div>
+
+    </body>
+</html>
